@@ -1,3 +1,7 @@
 # LM2425
 # Repositorio de Lenguaje de Marcas 2024-25
 ## Autor: Pablo Tena Castaño
+En este repositorio vamos a alojar todos los ficheros que vayamos desarollando durante el curso. En el primer tema de LM tendréis que instalar:
+- git
+- Visual Studio Code 
+- Extensiones de Visual Studio Code : CSS Peek, Autoclose tags, Material Icon Theme, Spanish Language Pack, Javascript ES6 Snippets,etc.
