@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla</title>
+</head>
+<body>
+    <h1>Tablas</h1>
+    <p>Una tabla permite la distribución la información organizada por filas(rows)y columnas(cols).
+       Se utiliza la etiqueta html de nombre <i>table <i> Ejemplo:  
+    </p>
+    <table border="1">
+        <tr>
+         <td>Elemento 1</td>
+         <td>Elemento 2</td>
+        </tr>
+        <tr>
+         <td>Elemento 3</td>
+         <td>Elemento 4</td>
+        </tr>
+    </table>
+    <h2>Problemas...</h2>
+    <p>Vamos a experimentar problemas cuando el numero de coluimnas no sea el mismo en todas las filas. Lo siguiente está mal</p>
+    <p>Ejemplo:</p>
+    <table border="1">
+        <tr>
+           <td>Elemento 1</td>
+        </tr>
+        <tr>
+           <td>Elemento 2</td>
+           <td>Elemento 2</td>
+        </tr>
+    </table>
+    <h2>Soluciones...</h2>
+    <p>Si queremos que una celda ocupe más de una columna o fila entonces utilizaremos las propiedades colspan o rowspan</p>
+    <p>Ejemplo:</p>
+
+    <table border="1">
+        <tr>
+           <td colspan="2"> Elemento 1</td>
+        </tr>
+        <tr>
+           <td>Elemento 2</td>
+           <td>Elemento 2</td>
+        </tr>
+    </table>
+</body>
+</html>
