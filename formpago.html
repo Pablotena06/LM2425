@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Pago</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        form {
+            border: 1px solid #000;
+            padding: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        h2 {
+            margin-top: 0;
+        }
+        fieldset {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        legend {
+            font-weight: bold;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .radio-group {
+            margin-bottom: 10px;
+        }
+        .radio-group label {
+            font-weight: normal;
+            margin-right: 10px;
+        }
+        button {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <h2>FORMULARIO DE PAGO <small>(Los campos obligatorios se han marcado con *)</small></h2>
+        
+        <fieldset>
+            <legend>Información de contacto</legend>
+            
+            <div class="radio-group">
+                <label>Profesión:</label>
+                <input type="radio" name="profesion" value="profesor" id="profesor">
+                <label for="profesor">Profesor/a</label>
+                <input type="radio" name="profesion" value="estudiante" id="estudiante">
+                <label for="estudiante">Estudiante</label>
+                <input type="radio" name="profesion" value="otro" id="otro-profesion">
+                <label for="otro-profesion">Otro</label>
+            </div>
+
+            <div class="radio-group">
+                <label>Tratamiento:</label>
+                <input type="radio" name="tratamiento" value="sr_sra" id="sr_sra">
+                <label for="sr_sra">Sr/Sra</label>
+                <input type="radio" name="tratamiento" value="dr_dra" id="dr_dra">
+                <label for="dr_dra">Dr/Dra</label>
+                <input type="radio" name="tratamiento" value="otro-tratamiento" id="otro-tratamiento">
+                <label for="otro-tratamiento">Otro</label>
+            </div>
+
+            <label for="nombre">Nombre: *</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="correo">Correo: *</label>
+            <input type="email" id="correo" name="correo" required>
+
+            <label for="telefono">Número de teléfono: *</label>
+            <input type="tel" id="telefono" name="telefono" required>
+
+            <label for="contrasena">Contraseña: *</label>
+            <input type="password" id="contrasena" name="contrasena" required>
+        </fieldset>
+
+        <fieldset>
+            <legend>Información de pago</legend>
+
+            <label for="tipo-tarjeta">Tipo de tarjeta:</label>
+            <select id="tipo-tarjeta" name="tipo-tarjeta">
+                <option value="visa">Visa</option>
+                <option value="mastercard">MasterCard</option>
+                <option value="amex">American Express</option>
+            </select>
+
+            <label for="numero-tarjeta">Número de tarjeta: *</label>
+            <input type="text" id="numero-tarjeta" name="numero-tarjeta" required>
+
+            <label for="fecha-caducidad">Fecha de caducidad: *</label>
+            <input type="date" id="fecha-caducidad" name="fecha-caducidad" required>
+
+            <label for="paypal">Cuenta de PayPal: *</label>
+            <input type="email" id="paypal" name="paypal" required>
+
+            <label for="metodo-pago">Método de pago preferido:</label>
+            <select id="metodo-pago" name="metodo-pago">
+                <option value="credito">Tarjeta de crédito</option>
+                <option value="paypal">PayPal</option>
+            </select>
+        </fieldset>
+
+        <button type="submit">VALIDAR EL PAGO</button>
+    </form>
+</body>
+</html>
+
