@@ -1,0 +1,16 @@
+h2 {
+    text-align: center;
+}
+
+p.parrafo {
+    font-size: 20px;
+    color: rgb(238, 30, 30);
+    background-color: rgba(34, 243, 128, 0.568);
+}
+
+p.especial {
+    font-size: 20px;
+    color: rgb(52, 64, 228);
+    background-color: rgb(161, 229, 238);
+    text-align:justify;
+}

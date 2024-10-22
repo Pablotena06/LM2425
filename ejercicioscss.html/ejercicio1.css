@@ -1,0 +1,10 @@
+p.color {
+    color: blue;
+    font-size: 18px;
+    }
+
+p.externo {
+        color: green;
+        background-color:khaki;
+        font-size: 18px;
+    }

@@ -1,0 +1,14 @@
+h3 {
+    text-align: left;
+    background-color: rgb(220, 80, 255);
+}
+
+.centrado {
+    text-align: center;
+    background-color: rgb(171, 238, 144);
+}
+
+.derecha {
+    text-align: right;
+    background-color: coral;
+}
