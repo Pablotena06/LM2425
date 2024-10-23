@@ -1,0 +1,32 @@
+¿Qué ventajas ves en usar CSS externo frente a los otros métodos?                               - CSS en línea: Aplica estilos directamente en el elemento HTML. Difícil de mantener.
+- CSS interno: Estilos dentro del bloque <style> en el mismo HTML. Útil para una sola página.
+- CSS externo: Estilos en un archivo separado. Mejor para mantener consistencia en varias páginas.
+
+¿Qué ventajas ves en usar CSS externo frente a los otros métodos?
+- Reutilización: Se usa en varias páginas.
+- Separación: Mantiene el HTML limpio.
+- Mantenimiento fácil: Cambios en un lugar afectan todas las páginas.
+- Mejor rendimiento: Aprovecha la caché del navegador.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+¿Por qué usarías una clase en lugar de un id?
+Usas clases cuando quieres aplicar el mismo estilo a múltiples elementos, ya que una clase puede ser reutilizada varias veces. Un id es único y solo debe usarse para un solo elemento en la página.
+
+Si cambias el estilo de h2 en el CSS, ¿cómo afecta eso a otros encabezados h2 en la página?
+Cambiar el estilo de h2 en el CSS afectará a todos los elementos h2 en la página, ya que los selectores de tipo aplican estilos a todos los elementos del mismo tipo.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+¿Qué diferencias hay entre alinear texto usando CSS y hacerlo con HTML?
+Con CSS, puedes controlar la alineación del texto de manera más flexible y consistente para todos los elementos, además de separarlo del contenido HTML, lo que mejora la organización del código. Usar HTML es menos eficiente y ha quedado obsoleto en favor de CSS.
+
+¿Cómo cambiarías los márgenes o el padding para mejorar el diseño de los párrafos?
+Puedes usar las propiedades margin y padding en CSS para ajustar el espacio exterior e interior de los párrafos. Aumentar el margin puede dar más espacio entre los elementos, y el padding puede hacer que el contenido dentro del párrafo no quede pegado a los bordes, mejorando la legibilidad y estética.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+¿Por qué los selectores combinados son útiles?
+Los selectores combinados permiten aplicar estilos a elementos que cumplen con criterios específicos, lo que te da mayor control y precisión sobre qué elementos estilizar, sin afectar a otros.
+
+¿Cómo afecta la estructura HTML a los selectores que puedes usar?
+La estructura HTML define las relaciones entre los elementos. Estas relaciones determinan qué selectores combinados puedes usar, permitiendo aplicar estilos a elementos según su ubicación y jerarquía dentro del documento.
+
+
