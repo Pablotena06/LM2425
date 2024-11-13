@@ -1,6 +1,6 @@
 *   {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: antiquewhite;
+    background-color: goldenrod;
 }
 
 .titulo {
@@ -95,6 +95,6 @@
     }
 
 .navegador  {
-                display: none; /* Hacer desaparecer la caja*/
+                display: none; 
             }
 }
