@@ -4,35 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cálculo del Área del Círculo</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
-        form {
-            margin-bottom: 20px;
-        }
-        input[type="number"] {
-            padding: 5px;
-            margin: 10px 0;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        #resultado {
-            margin-top: 20px;
-            font-size: 1.2em;
-            color: #333;
-        }
-    </style>
 </head>
 <body>
     <h1>Cálculo del Área del Círculo</h1>
@@ -47,14 +18,14 @@
         function calcularArea(event) {
             event.preventDefault(); // Evita que el formulario se envíe
 
-            const radio = parseFloat(document.getElementById('radio').value);
+            let radio = parseFloat(document.getElementById('radio').value);
 
             if (radio <= 0 || isNaN(radio)) {
                 document.getElementById('resultado').innerText = 'Por favor, introduce un radio válido mayor que 0.';
                 return;
             }
 
-            const area = Math.PI * Math.pow(radio, 2);
+            let area = Math.PI * Math.pow(radio, 2);
             document.getElementById('resultado').innerText = `El área del círculo es: ${area.toFixed(2)} unidades cuadradas.`;
         }
     </script>

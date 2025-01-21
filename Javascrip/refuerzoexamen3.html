@@ -4,23 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verificar Par o Impar</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            text-align: center;
-        }
-        input, button {
-            margin: 10px;
-            padding: 10px;
-            font-size: 16px;
-        }
-        #result {
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
-        }
-    </style>
 </head>
 <body>
     <h1>Comprobar si un número es par o impar</h1>
@@ -31,14 +14,14 @@
 
     <script>
         function checkParity() {
-            const number = document.getElementById('numberInput').value;
+            let number = document.getElementById('numberInput').value;
 
             if (number === "") {
                 document.getElementById('result').innerText = "Por favor, introduce un número válido.";
                 return;
             }
 
-            const num = parseInt(number, 10);
+            let num = parseInt(number, 10);
 
             if (num % 2 === 0) {
                 document.getElementById('result').innerText = `El número ${num} es par.`;

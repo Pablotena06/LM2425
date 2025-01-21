@@ -4,39 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expediente Académico</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        label, input, button {
-            display: block;
-            margin: 10px 0;
-        }
-        input {
-            padding: 5px;
-            width: 100%;
-        }
-        button {
-            padding: 10px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .results {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
@@ -56,7 +23,6 @@
             <p id="average"></p>
         </div>
     </div>
-
     <script>
         const gradesContainer = document.getElementById('gradesContainer');
         const resultsDiv = document.getElementById('results');
@@ -78,12 +44,12 @@
         document.getElementById('gradesForm').addEventListener('submit', (event) => {
             event.preventDefault();
 
-            const inputs = gradesContainer.querySelectorAll('input');
-            const grades = Array.from(inputs).map(input => parseFloat(input.value));
+            let inputs = gradesContainer.querySelectorAll('input');
+            let grades = Array.from(inputs).map(input => parseFloat(input.value));
 
-            const approvedCount = grades.filter(grade => grade >= 5).length;
-            const failedCount = grades.filter(grade => grade < 5).length;
-            const average = grades.reduce((sum, grade) => sum + grade, 0) / grades.length;
+            let approvedCount = grades.filter(grade => grade >= 5).length;
+            let failedCount = grades.filter(grade => grade < 5).length;
+            let average = grades.reduce((sum, grade) => sum + grade, 0) / grades.length;
 
             approvedCountP.textContent = `Módulos aprobados: ${approvedCount}`;
             failedCountP.textContent = `Módulos suspendidos: ${failedCount}`;
