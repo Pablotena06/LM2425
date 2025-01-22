@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuenta Cifras</title>
+<head>
+<body>
+    <div class="container">
+        <h1>Cuenta Cifras</h1>
+        <p>Introduce un número entero positivo:</p>
+        <input type="text" id="numberInput" placeholder="Escribe un número">
+        <button onclick="countDigits()">Calcular Cifras</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function countDigits() {
+            const input = document.getElementById('numberInput').value;
+
+            // Validación para asegurarse de que el número es un entero positivo
+            if (!/^[0-9]+$/.test(input)) {
+                document.getElementById('result').innerText = 'Por favor, introduce un número entero positivo válido.';
+                return;
+            }
+
+            // Calcular la cantidad de cifras
+            const digitCount = input.length;
+
+            // Mostrar el resultado
+            document.getElementById('result').innerText = `El número tiene ${digitCount} cifras.`;
+        }
+    </script>
+</body>
+</html>
