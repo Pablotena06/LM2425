@@ -16,7 +16,7 @@
 
     <script>
         function countDigits() {
-            const input = document.getElementById('numberInput').value;
+            let input = document.getElementById('numberInput').value;
 
             // Validación para asegurarse de que el número es un entero positivo
             if (!/^[0-9]+$/.test(input)) {
@@ -25,7 +25,7 @@
             }
 
             // Calcular la cantidad de cifras
-            const digitCount = input.length;
+            let digitCount = input.length;
 
             // Mostrar el resultado
             document.getElementById('result').innerText = `El número tiene ${digitCount} cifras.`;

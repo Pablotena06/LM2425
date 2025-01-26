@@ -14,14 +14,14 @@
 
     <script>
         function calculateFactorial() {
-            const input = document.getElementById('numberInput').value;
-            const resultDiv = document.getElementById('result');
+            let input = document.getElementById('numberInput').value;
+            let resultDiv = document.getElementById('result');
 
             // Limpiar el mensaje previo
             resultDiv.innerHTML = '';
 
             // Validar si el input es un número entero positivo
-            const number = parseInt(input);
+            let number = parseInt(input);
             if (isNaN(number) || number < 0) {
                 resultDiv.innerHTML = '<span class="error">Por favor, ingresa un número entero positivo.</span>';
                 return;
