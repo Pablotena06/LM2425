@@ -15,6 +15,13 @@ function sustrae() {
 frutas.pop();
 document.getElementById("demo").innerHTML = frutas;
 }
+var frutas, texto, longitud, i;
+frutas = ["Platano", "Naranja", "Manzana", "Mango "];
+longitud = frutas.length;
+texto = "<ul>";
+for (i = 0; i < longitud; i++) {
+texto += "<li>" + frutas[i] + "</li>";
+}
 </script>
 </body>
 </html>
