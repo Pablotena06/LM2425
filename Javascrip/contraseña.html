@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contraseña</title>
+    <meta charset="UTF-8"> <!-- Establece la codificación de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace que la página sea responsiva -->
+    <title>Contraseña</title> <!-- Título de la página que aparecerá en la pestaña del navegador -->
 </head>
 <body>
     <script>
+        // Definimos la función "envio" que se ejecuta cuando el usuario hace clic en el botón "Iniciar"
         function envio () {
+            // Obtenemos el valor ingresado en el campo "Usuario" usando su ID "usuario"
             var usuario = document.getElementById("usuario").value;
+            
+            // Obtenemos el valor ingresado en el campo "Contraseña" usando su ID "contrasena"
             var contrasena = document.getElementById("contrasena").value;
-            alert ("Bienvenido usuario "+usuario+" con la contraseña "+contrasena);
+            
+            // Mostramos una alerta con el nombre de usuario y la contraseña ingresada
+            alert ("Bienvenido usuario " + usuario + " con la contraseña " + contrasena);
         }
     </script>
+
+    <!-- Formulario de inicio de sesión -->
     <form>
-        <fieldset>
-            <legend>Inicie Sesión</legend>
-            <label>Usuario: </label>
-            <input type="text" name="Usuario" id="usuario">
-            <br><br>
-            <label>Contraseña: </label>
-            <input type="password" name="Contraseña" id="contrasena">
-            <br><br>
-            <button type="submit" onclick="envio()">Iniciar</button>
+        <fieldset> <!-- Campo de formulario que agrupa los elementos -->
+            <legend>Inicie Sesión</legend> <!-- Leyenda que indica que es la sección para iniciar sesión -->
+            
+            <!-- Campo de entrada para el nombre de usuario -->
+            <label>Usuario: </label> <!-- Etiqueta que describe el campo -->
+            <input type="text" name="Usuario" id="usuario"> <!-- Campo de texto para ingresar el nombre de usuario -->
+            <br><br> <!-- Espacio entre los campos -->
+            
+            <!-- Campo de entrada para la contraseña -->
+            <label>Contraseña: </label> <!-- Etiqueta que describe el campo -->
+            <input type="password" name="Contraseña" id="contrasena"> <!-- Campo de tipo password para ocultar lo ingresado -->
+            <br><br> <!-- Espacio entre los campos -->
+            
+            <!-- Botón que ejecuta la función "envio" cuando se hace clic -->
+            <button type="submit" onclick="envio()">Iniciar</button> <!-- Botón de tipo submit que activa la función "envio" -->
         </fieldset>
     </form>
 </body>
