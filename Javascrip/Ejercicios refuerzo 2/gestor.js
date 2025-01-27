@@ -1,38 +1,58 @@
-//gestorArrays.html
+// Gestor de arrays para añadir números, ordenar y calcular la media
+
+// Inicializamos un array vacío donde guardaremos los números
 var lista = [];
-//Añadir número al array
+
+// Función para añadir un número al array
 function anadir()
 {
+    // Obtenemos el valor del input y lo convertimos a un número entero
     var numero = parseInt(document.getElementById('num').value);
-    //Comprobador de numero
-    if (isNaN(numero) || numero<0)
+    
+    // Comprobamos si el número ingresado es válido (entero y positivo)
+    if (isNaN(numero) || numero < 0)
     {
+        // Si el número no es válido, mostramos una alerta
         alert("Por favor introduzca un número válido (entero y positivo)");
-        return;
+        return; // Terminamos la ejecución si el número no es válido
     }
+
+    // Si el número es válido, lo añadimos al array
     lista.push(numero);
-    document.getElementById('final').innerHTML = "El nº " +numero+ " ha sido añadido";
+
+    // Mostramos el número que ha sido añadido al array
+    document.getElementById('final').innerHTML = "El nº " + numero + " ha sido añadido";
 }
 
-
-//Ordenar lista y mostrarlo por pantalla
+// Función para ordenar la lista de números y mostrarla
 function ordenar()
 {
-    var orden = lista.sort( ); //Espacio que se lo traga el programa???? No tiene sentido
-    document.getElementById("final").innerHTML = "Su lista de número es " +orden;
+    // Ordenamos el array de números de menor a mayor
+    var orden = lista.sort(); // El sort() por defecto ordena los elementos como cadenas de texto
+    
+    // Mostramos la lista ordenada en el HTML
+    document.getElementById("final").innerHTML = "Su lista de números es " + orden;
 }
 
-
-//Realizar media
-function media ()
+// Función para calcular la media de los números en la lista
+function media()
 {
+    // Inicializamos una variable para acumular la suma de los números
     var suma = 0;
+
+    // Obtenemos el número total de elementos en el array
     var total = lista.length;
-    for (var i = 0; i < total; i++) //Es <, ya que .length siempre nos indicará el número desde 1, pero la primera posición de la lista es el número 0, 
-    //si ponemos i <= total superamos por 1 el límite de la lista
+
+    // Usamos un bucle for para recorrer todos los números de la lista
+    for (var i = 0; i < total; i++) // Usamos i < total porque .length da la cantidad de elementos, empezando desde el índice 0
     {
+        // Sumamos cada número del array a la variable suma
         suma = suma + lista[i];
     }
-    var media = suma/total;
-    document.getElementById("media").innerHTML = "La media es de " +media;
+
+    // Calculamos la media dividiendo la suma por la cantidad total de elementos
+    var media = suma / total;
+
+    // Mostramos la media en el HTML
+    document.getElementById("media").innerHTML = "La media es de " + media;
 }
