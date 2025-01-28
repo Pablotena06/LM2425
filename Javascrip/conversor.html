@@ -3,41 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor</title>
+    <title>conversor</title>
 </head>
 <body>
+    <h1>Conversor:</h1>
+    <label for="euros">€:</label>
+    <input type="text" id="euros"> <br> <br>
+
+    <label for="$">$:</label>
+    <input type="text" id="$"> <br> <br>
+
+    <button onclick="Euros_dolares()">Pasar a $:</button> <br>  
+    <p id="resultado"></p>
+
+    <button onclick="Dolares_euros()">Pasar a €:</button>
+    <p id="resultado1"></p>
+
     <script>
-        function euros() {
-            document.getElementById('xx').addEventListener('submit'), function(event) 
-            {
-                event.preventDefault();
-                var euro=document.getElementById("euros").value;
-                var conversor;
-                conversor=euro*0.94;
-                alert ("Su conversión a dolar son: "+conversor);
+        /*Funcion de Euros a dolares*/
+        function Euros_dolares(){
+        let euros = parseFloat(document.getElementById("euros").value);
+        if(isNaN(euros)){
+                document.getElementById("resultado").innerHTML = "Debes introducir valores numéricos"
+            }
+        else{
+                let resultado = euros * 1.13;
+                document.getElementById("resultado").innerHTML = " " + resultado           
             }
         }
 
-        function dolares() {
-            event.preventDefault();
-            var dolar=document.getElementById("dolares").value;
-            var conversor;
-            conversor=dolar*0.94;
-            alert ("Su conversión a euros son: "+conversor);
+        /*Funcion de Dolares a euros*/        
+        function Dolares_euros(){
+        let $ = parseFloat(document.getElementById("$").value);
+        if(isNaN($)){
+                document.getElementById("resultado1").innerHTML = "Debes introducir valores numéricos"
+            }
+        else{
+                let resultado = $ / 1.13;
+                document.getElementById("resultado1").innerHTML = " " + resultado           
+            }
         }
     </script>
-    <form>
-        <fieldset>
-            <legend>Conversor de dinero</legend>
-            <label>Euros </label>
-            <input type="text" name="euros" id="euros"><br>
-            <button onclick="euros()">Convertir a dolar</button>
-            <br><br>
-            <label>Dólares </label>
-            <input type="text" name="dolares" id="dolares">
-            <br><br>
-            <button onclick="dolares()">Convertir a euro</button>
-        </fieldset>
-    </form>
 </body>
 </html>
