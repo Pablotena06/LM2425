@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reparte gastos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 20px;
+    }
+
+    input, button {
+      padding: 10px;
+      margin: 10px;
+    }
+
+    .result {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    #array-display {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Reparte gastos</h1>
+
+  <label for="gasto">Introduce un número positivo:</label>
+  <input type="number" id="gasto" step="any" min="0.01" required>
+  
+  <button id="addButton">Añadir</button>
+
+  <br>
+
+  <label for="totalPersonas">Introduce un número entero positivo para dividir:</label>
+  <input type="number" id="totalPersonas" min="1" required>
+
+  <button id="divideButton">Divide</button>
+
+  <div id="array-display"></div>
+  <div class="result" id="sumaTotal"></div>
+  <div class="result" id="resultadoDivision"></div>
+
+  <script>
+    // Array para almacenar los números positivos
+    let numbers = [];
+    let suma = 0;
+
+    // Referencias a los elementos del DOM
+    let gasto = document.getElementById('gasto');
+    let totalPersonas = document.getElementById('totalPersonas');
+    let addButton = document.getElementById('addButton');
+    let divideButton = document.getElementById('divideButton');
+    let arrayDisplay = document.getElementById('array-display');
+    let sumaTotal = document.getElementById('sumaTotal');
+    let resultadoDivision = document.getElementById('resultadoDivision');
+
+    // Función para actualizar la visualización del array y la suma
+    function mostrarVector() {
+      arrayDisplay.innerHTML = `Elementos en el array(gastos): [${numbers.join(', ')}]`;
+      sumaTotal.innerHTML = `Total gastado: ${suma} €`;
+    }
+
+    // Evento para añadir números al array
+    addButton.addEventListener('click', () => {
+      let entrada = parseFloat(gasto.value);
+
+      // Validar si el valor ingresado es un número real positivo
+      if (isNaN(entrada) || entrada <= 0) {
+        alert("Por favor, introduce un número positivo.");
+        return;
+      }
+
+      // Añadir el número al array y actualizar la suma
+      numbers.push(entrada);
+      suma = suma + entrada;
+
+      // Limpiar el campo de texto
+      gasto.value = '';
+
+      // Actualizar la visualización
+      mostrarVector();
+    });
+
+    // Evento para dividir la suma entre el número ingresado
+    divideButton.addEventListener('click', () => {
+      let divideValue = parseInt(totalPersonas.value);
+
+      // Validar si el valor ingresado es un número entero positivo
+      if (isNaN(divideValue) || divideValue <= 0) {
+        alert("Por favor, introduce un número entero positivo para dividir la cantidad.");
+        return;
+      }
+
+      // Realizar la división
+      let result = suma / divideValue;
+
+      // Mostrar el resultado
+      resultadoDivision.innerHTML = `Cada persona debe aportar: ${result.toFixed(2)} €`;
+    });
+  </script>
+
+</body>
+</html>
