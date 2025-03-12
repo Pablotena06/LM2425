@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precio con Propina</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #precioForm {
+            width: 50%;
+            margin: 40px auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"], input[type="radio"] {
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calcula el precio con propina</h1>
+    <form id="precioForm">
+        <label for="montoTotal">Ingrese monto total:</label>
+        <input type="number" id="montoTotal" required>
+
+        <br><br>
+
+        <p>Seleccione una propina:</p>
+        <input type="radio" id="sinPropina" name="propina" value="0">
+        <label for="sinPropina">Sin propina</label>
+
+        <input type="radio" id="5%" name="propina" value="0.05">
+        <label for="5%">Propina del 5%</label>
+
+        <input type="radio" id="10%" name="propina" value="0.10">
+        <label for="10%">Propina del 10%</label>
+
+        <input type="radio" id="15%" name="propina" value="0.15">
+        <label for="15%">Propina del 15%</label>
+
+        <br><br>
+        <button type="submit">Calcular</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        const montoTotalInput = document.getElementById('montoTotal');
+        const sinPropinaRadio = document.getElementById('sinPropina');
+        const cincoPorCientoRadio = document.getElementById('5%');
+        const diezPorCientoRadio = document.getElementById('10%');
+        const quincePorCientoRadio = document.getElementById('15%');
+
+        const resultadoDiv = document.getElementById('resultado');
+
+        sinPropinaRadio.addEventListener('change', calcularPrecio);
+        cincoPorCientoRadio.addEventListener('change', calcularPrecio);
+        diezPorCientoRadio.addEventListener('change', calcularPrecio);
+        quincePorCientoRadio.addEventListener('change', calcularPrecio);
+
+        function calcularPrecio(event) {
+            const montoTotal = parseFloat(montoTotalInput.value);
+            
+            if (isNaN(montoTotal) || montoTotal <= 0) {
+                resultadoDiv.innerText = 'Por favor, ingrese un monto total positivo';
+                return;
+            }
+
+            const propina = event.target.value;
+
+            const precioFinal = montoTotal + (montoTotal * propina);
+            resultadoDiv.innerText = `El precio final es: $${precioFinal.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
