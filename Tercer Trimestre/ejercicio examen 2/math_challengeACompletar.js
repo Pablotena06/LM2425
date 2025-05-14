@@ -5,7 +5,7 @@ $(document).ready(function() {
     let highScore = localStorage.getItem('mathChallengeHighScore') || 0; // Obtener récord o 0
     let num1, num2, operator, correctAnswer;
     let timerInterval;
-    **************************** // 5 segundos por pregunta (en milisegundos)
+    let timePerQuestion = 5000; // 5 segundos por pregunta (en milisegundos)
     let timeLeft = timePerQuestion;
 
     // --- Selectores de jQuery ---
@@ -26,13 +26,13 @@ $(document).ready(function() {
     /**
      * Inicia una nueva partida.
      */
-    **************************** // Función para iniciar el juego
+    function startGame() { // Función para iniciar el juego
         currentScore = 0;
         $currentScoreDisplay.text(currentScore);
         $feedback.html('&nbsp;').removeClass('text-red-500 text-green-500'); // Limpiar feedback
-        **************************** // Ocultar botón de inicio
+        $startButton.hide(); // Ocultar botón de inicio
         $gameArea.slideDown(); // Mostrar área de juego con animación
-        **************************** // Generar la primera pregunta
+        generateQuestion(); // Generar la primera pregunta
     }
 
     /**
@@ -44,8 +44,8 @@ $(document).ready(function() {
         $feedback.html('&nbsp;').removeClass('text-red-500 text-green-500');
 
         // Generar números aleatorios (ej: entre 1 y 10)
-        num1 = ****************************
-        num2 = ****************************
+        num1 = Math.floor(Math.random() * 10) + 1;
+        num2 = Math.floor(Math.random() * 10) + 1;
 
         // Seleccionar operador aleatorio (+, -, *)
         const operators = ['+', '-', '*'];
@@ -59,7 +59,7 @@ $(document).ready(function() {
         // Calcular respuesta correcta
         switch (operator) {
             case '+':
-                ****************************
+                correctAnswer = num1 + num2;
                 break;
             case '-':
                 correctAnswer = num1 - num2;
@@ -111,14 +111,14 @@ $(document).ready(function() {
 
         if (!isNaN(userAnswer) && userAnswer === correctAnswer) {
             // Respuesta Correcta
-            **************************** // Aumentamos en 1 la puntuación actual
+            currentScore += 1; // Aumentamos en 1 la puntuación actual
             $currentScoreDisplay.text(currentScore);
             $feedback.text('¡Correcto!').removeClass('text-red-500').addClass('text-green-500');
             // Esperar un poco antes de la siguiente pregunta
             setTimeout(generateQuestion, 800);
         } else {
             // Respuesta Incorrecta
-             handleIncorrectAnswer("Incorrecto.");
+            handleIncorrectAnswer("Incorrecto.");
         }
     }
 
@@ -127,10 +127,9 @@ $(document).ready(function() {
      * @param {string} message - Mensaje a mostrar (ej: "Incorrecto", "Tiempo agotado").
      */
     function handleIncorrectAnswer(message) {
-         $feedback.html(`${message} La respuesta era ${correctAnswer}.`).removeClass('text-green-500').addClass('text-red-500');
-         **************************** // Finaliza partida actual
+        $feedback.html(`${message} La respuesta era ${correctAnswer}.`).removeClass('text-green-500').addClass('text-red-500');
+        endGame(); // Finaliza partida actual
     }
-
 
     /**
      * Finaliza la partida actual y actualiza el récord si es necesario.
@@ -142,7 +141,7 @@ $(document).ready(function() {
         // Comprobar y actualizar récord
         if (currentScore > highScore) {
             highScore = currentScore;
-            **************************** // Guardar nuevo récord
+            localStorage.setItem('mathChallengeHighScore', highScore); // Guardar nuevo récord
             $highScoreDisplay.text(highScore);
             $feedback.append(' ¡Nuevo récord!'); // Añadir mensaje de récord
         }
@@ -162,8 +161,5 @@ $(document).ready(function() {
             checkAnswer();
         }
     });
-
-    // (Opcional) Añadir un botón de "Enviar" si no se quiere depender solo de Enter
-    // $('<button id="submitButton" class="bg-green-500 ...">Enviar</button>').insertAfter($answerInput).on('click', checkAnswer);
 
 }); // Fin de $(document).ready
