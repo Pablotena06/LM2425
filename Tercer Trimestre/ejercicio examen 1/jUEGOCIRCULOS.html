@@ -1,75 +1,137 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego de Clics Aleatorios</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Juego de Círculos</title>
+  <style>
+    body {
+      background-color: white; /* Fondo blanco */
+      color: black; /* Se añadió punto y coma */
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    #gameArea {
+      width: 60%;
+      height: 500px;
+      background-color: #f0f0f0;
+      border: 5px solid #ccc;
+      position: relative;
+      overflow: hidden;
+      margin: 20px auto;
+    }
+
+    .circle {
+      background-color: rgb(114, 0, 0);
+      border-radius: 50%;
+      position: absolute;
+      cursor: pointer;
+    }
+
+    #startBtn {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #score, #highScore, #lastScore {
+      margin-top: 10px;
+      margin-bottom: 15px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <script>
-        $(document).ready(function ()
-        {
-            //Record que se guardará en localstorage
-            var record = localStorage.getItem("record");
 
-            //jquery simplificado
-            // Referencia a <span> de resultado y puntuación
-            var resultado = $("#resultado");
-            var pts = $("#puntuacion");
-            let segcirculo = 1000;
-            let puntuacion = 0;
-            var tiempo = 30;
+  <h1>Juego de Círculos</h1>
+  <div id="highScore">Puntuación máxima: 0</div>
+  <div id="lastScore">Última puntuación: 0</div> <!-- Se añadió para mostrar la última puntuación -->
+  <button id="startBtn">Iniciar Juego</button>
+  <div id="gameArea"></div>
+  <div id="score">Puntuación: 0</div>
 
-            //Iniciar Juego
-            $("#empezarjuego").click(function ()
-            {
-                setTimeout(function()
-                {
-                    $(".circulo").on("click" ,function ()
-                        {
-                            console.log(puntuacion);
-                            puntuacion=puntuacion+1;
-                            $(pts).html(puntuacion);
-                            $(".circulo").hide();
-                        })
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      let score = 0;
+      let gameActive = false;
+      let timeoutId;
+      let highScore = localStorage.getItem('highScore') || 0;
+      let lastScore = localStorage.getItem('lastScore') || 0;
+      $('#highScore').text('Puntuación máxima: ' + highScore);
+      $('#lastScore').text('Última puntuación: ' + lastScore); // Mostrar la última puntuación
 
-                    const intervalo = setInterval(function()
-                    {
-                        tiempo--;
-                        $(".circulo").show();
-                        $(".circulo").css("width",Math.floor(Math.random() * 20+40)+"px");
-                        $(".circulo").css("height",Math.floor(Math.random() * 20+40)+"px");
-                        $(".circulo").css("top",Math.floor(Math.random() *300)+"px");
-                        $(".circulo").css("left",Math.floor(Math.random() *600)+"px");
-                        if (tiempo == 0)
-                        {
-                            clearInterval(intervalo);
-                            $(".circulo").hide();
-                            if (puntuacion > record)
-                            {
-                                alert("Has establecido un nuevo récord: " +puntuacion+ "pts");
-                                localStorage.setItem("record", puntuacion);
-                                $(resultado).html(localStorage.getItem("record"));
-                            };
-                        }
-                    },segcirculo);
-                })
-                //Comparamos record
-            });
-            //Muestra el récord
-            $("#resultado").html(+record);
+      function createCircle() {
+        let gameArea = $('#gameArea');
+        gameArea.empty(); // Eliminar cualquier círculo anterior
+
+        let circle = $('<div class="circle"></div>');
+
+        let size = Math.floor(Math.random() * 26) + 25; // entre 25 y 50 px
+        let areaWidth = gameArea.width();
+        let areaHeight = gameArea.height();
+        let posX = Math.random() * (areaWidth - size);
+        let posY = Math.random() * (areaHeight - size);
+
+        circle.css({
+          width: size + 'px',
+          height: size + 'px',
+          left: posX + 'px',
+          top: posY + 'px'
         });
-    </script>
-    <h1>Juego de Clics Aleatorios</h1>
-    <p>Récord: <span id="resultado"></span></p>
-    <input type="button" value="Iniciar Juego" id="empezarjuego">
-    <div class="contenedor">
-        <div class="caja">
-            <div class="circulo"></div>
-        </div>
-    </div>
-    <p>Puntuación: <span id="puntuacion">0</span></p>
+
+        // Al hacer clic en el círculo
+        circle.on('click', function (e) {
+          if (!gameActive) return;
+          e.stopPropagation(); // Evita que el clic se propague al gameArea
+          score++;
+          $('#score').text('Puntuación: ' + score);
+          createCircle(); // Mostrar siguiente círculo
+        });
+
+        gameArea.append(circle);
+      }
+
+      $('#gameArea').on('click', function () {
+        if (!gameActive) return;
+
+        // Si se hace clic fuera del círculo
+        createCircle(); // Cambiar el círculo de posición
+      });
+
+      $('#startBtn').click(function () {
+        score = 0;
+        gameActive = true;
+        $('#score').text('Puntuación: 0');
+        $('#gameArea').empty();
+
+        createCircle(); // Primer círculo
+
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+          gameActive = false;
+          $('#gameArea').empty();
+
+          // Guardar la última puntuación
+          localStorage.setItem('lastScore', score);
+          $('#lastScore').text('Última puntuación: ' + score); // Actualizar la última puntuación
+
+          if (score > highScore) {
+            highScore = score;
+            localStorage.setItem('highScore', highScore);
+            $('#highScore').text('Puntuación máxima: ' + highScore);
+            alert('¡Nuevo récord! Puntuación final: ' + score);
+          } else {
+            alert('¡Juego terminado! Puntuación final: ' + score);
+          }
+        }, 30000); // Duración del juego de 30 segundos
+      });
+    });
+  </script>
+
 </body>
 </html>
+
